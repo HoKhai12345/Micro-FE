@@ -2,17 +2,13 @@ const { withNativeFederation, shareAll } = require('@angular-architects/native-f
 
 module.exports = withNativeFederation({
   name: 'dashboard',
-
-
-
   exposes: {
     './Component': './projects/dashboard/src/app/app.ts',
+    './ConfigService': './projects/dashboard/src/app/shared/config.service.ts'
   },
-
   shared: {
     ...shareAll({ singleton: true, strictVersion: true, requiredVersion: 'auto' }),
   },
-
   skip: [
     'rxjs/ajax',
     'rxjs/fetch',

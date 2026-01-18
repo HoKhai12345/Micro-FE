@@ -1,12 +1,24 @@
 import { Component, signal } from '@angular/core';
-import {RouterLink, RouterOutlet} from '@angular/router';
+import {RouterOutlet} from '@angular/router';
+import {EditorComponent} from 'ngx-monaco-editor-v2';
+import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink],
+  standalone: true,
+  imports: [RouterOutlet, EditorComponent, FormsModule],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
 export class App {
-  protected readonly title = signal('dashboard');
+  readonly title = signal('Dashboard');
+  code = `function hello() {
+  console.log("Hello Monaco");
+}`;
+
+  options = {
+    theme: 'vs-dark',
+    language: 'typescript',
+    automaticLayout: true
+  };
 }

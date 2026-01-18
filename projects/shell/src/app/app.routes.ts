@@ -3,8 +3,13 @@ import {loadRemoteModule} from '@angular-architects/native-federation';
 
 export const routes: Routes = [
   {
-    path: 'shell', // Khi gõ /dashboard trên trình duyệt
+    path: 'shell',
     loadComponent: () =>
-      loadRemoteModule('shell', './Component').then(m => m.AppComponent)
+      import('./app').then(m => m.App)
+  },
+  {
+    path: 'dashboard',
+    loadComponent: () =>
+      loadRemoteModule('dashboard', './Component').then(m => m.App)
   }
 ];

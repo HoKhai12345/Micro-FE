@@ -1,7 +1,17 @@
-<nav style="background: #f4f4f4; padding: 10px; border-bottom: 1px solid #ccc">
-  <a routerLink="/dashboard">Trang chủ Shell</a> |
-  <a routerLink="/shell">Xem Shell (Remote)</a>
-</nav>
+<nav class="d-flex" style="background: #f4f4f4; padding: 10px; border-bottom: 1px solid #ccc">
+  <button class="btn btn-primary me-2" routerLink="/">Shell</button>
+  <button class="btn btn-success" routerLink="/dashboard">Dashboard</button>
+  <nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+      <div class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+        <button (click)="changeUser()" class="btn btn-outline-success" type="btn">Search</button>
+      </div>
+    </div>
+  </nav>
 
-<div style="padding: 20px">
-  <router-outlet></router-outlet> </div>
+</nav>
+<div class="row">
+<!--  <h1>{{ title() }}</h1>-->
+  <router-outlet></router-outlet>
+</div>

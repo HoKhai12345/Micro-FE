@@ -58,7 +58,10 @@
 							}
 						],
 						"styles": [
-							"projects/shell/src/styles.scss"
+							"projects/shell/src/styles.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/bootstrap-icons/font/bootstrap-icons.css",
+              "projects/shell/src/styles.scss"
 						],
 						"polyfills": [
 							"es-module-shims"
@@ -156,7 +159,10 @@
 							}
 						],
 						"styles": [
-							"projects/dashboard/src/styles.scss"
+							"projects/dashboard/src/styles.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/bootstrap-icons/font/bootstrap-icons.css",
+              "projects/shell/src/styles.scss"
 						],
 						"polyfills": [
 							"es-module-shims"

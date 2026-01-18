@@ -1,8 +1,11 @@
-<nav style="background: #f4f4f4; padding: 10px; border-bottom: 1px solid #ccc">
-  <a routerLink="/">Trang chủ Dashboard</a> |
-  <a routerLink="/shell">Xem shell (Remote)</a>
-</nav>
-
 <div style="padding: 20px">
-  <router-outlet></router-outlet> </div>
-<h1>DEMO</h1>
+  <h1>{{ title() }}</h1>
+<!--  <router-outlet></router-outlet>-->
+  <div style="height:500px; padding:12px; background:#1e1e1e; margin-top:20px">
+    <ngx-monaco-editor
+      style="height:calc(100% - 40px); display:block"
+      [(ngModel)]="code"
+      [options]="options">
+    </ngx-monaco-editor>
+  </div>
+</div>

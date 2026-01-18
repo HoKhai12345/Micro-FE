@@ -1,10 +1,9 @@
 import { Routes } from '@angular/router';
-import {loadRemoteModule} from '@angular-architects/native-federation';
 
 export const routes: Routes = [
   {
-    path: 'dashboard', // Khi gõ /dashboard trên trình duyệt
+    path: '',
     loadComponent: () =>
-      loadRemoteModule('dashboard', './Component').then(m => m.AppComponent)
+      import('./app').then(m => m.App)
   }
 ];
