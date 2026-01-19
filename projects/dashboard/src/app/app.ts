@@ -2,7 +2,7 @@ import { Component, signal, inject } from '@angular/core';
 import {RouterOutlet} from '@angular/router';
 import {EditorComponent} from 'ngx-monaco-editor-v2';
 import {FormsModule} from '@angular/forms';
-import { ConfigService } from './shared/config.service'; // Import file nội bộ
+import { ConfigService } from './shared/config.service';
 @Component({
   selector: 'app-root',
   standalone: true,

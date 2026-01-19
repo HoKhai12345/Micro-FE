@@ -1,19 +1,38 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, signal, inject, Optional } from '@angular/core';
+import { loadRemoteModule } from '@angular-architects/native-federation';
 
+/**
+ * ConfigService cho Dashboard
+ * - Khi chạy độc lập: Dùng instance riêng
+ * - Khi load vào Shell: Có thể load từ Shell qua Module Federation
+ */
 @Injectable({
-  providedIn: 'root' // Đảm bảo đây là Singleton Service
+  providedIn: 'root'
 })
 export class ConfigService {
-  // Khởi tạo các Signal với giá trị mặc định
-  // Signal giúp UI tự động cập nhật khi giá trị thay đổi mà không cần check manual
   currentUser = signal<string>('Guest');
   editorTheme = signal<string>('vs-dark');
 
   constructor() {
-    console.log('ConfigService được khởi tạo! (Singleton Check)');
+    console.log('ConfigService được khởi tạo trong Dashboard!');
+    
+    // Thử load từ Shell nếu có (optional)
+    this.tryLoadFromShell();
   }
 
-  // Bạn có thể viết thêm các hàm xử lý logic tại đây nếu cần
+  private async tryLoadFromShell() {
+    try {
+      const shellModule = await loadRemoteModule('shell', './ConfigService');
+      if (shellModule?.ConfigService) {
+        // Nếu load được từ Shell, có thể sync state hoặc dùng trực tiếp
+        console.log('ConfigService từ Shell đã được load!');
+      }
+    } catch (err) {
+      // Shell không có hoặc chưa chạy → dùng instance riêng
+      console.log('Dashboard chạy độc lập, dùng ConfigService riêng');
+    }
+  }
+
   updateUser(newName: string) {
     this.currentUser.set(newName);
   }
