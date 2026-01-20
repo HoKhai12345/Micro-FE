@@ -1,13 +1,9 @@
 const { withNativeFederation, shareAll } = require('@angular-architects/native-federation/config');
 
 module.exports = withNativeFederation({
-  name: 'shell',
+  name: 'header',
   exposes: {
-    './ConfigService': './projects/shell/src/app/shared/config.service.ts'
-  },
-  remotes: {
-    "dashboard": "http://localhost:4201/remoteEntry.json",
-    "header": "http://localhost:4202/remoteEntry.json",
+    './Component': './projects/header/src/app/app.ts'
   },
   shared: {
     ...shareAll({ singleton: true, strictVersion: true, requiredVersion: 'auto' }),
@@ -21,10 +17,14 @@ module.exports = withNativeFederation({
     'ngx-monaco-editor-v2'
     // Add further packages you don't need at runtime
   ],
-  features: {
-    // New feature for more performance and avoiding
-    // issues with node libs. Comment this out to
-    // get the traditional behavior:
-    ignoreUnusedDeps: true
-  }
+  //
+  // // Please read our FAQ about sharing libs:
+  // // https://shorturl.at/jmzH0
+  //
+  // features: {
+  //   // New feature for more performance and avoiding
+  //   // issues with node libs. Comment this out to
+  //   // get the traditional behavior:
+  //   ignoreUnusedDeps: true
+  // }
 });

@@ -11,5 +11,10 @@ export const routes: Routes = [
     path: 'dashboard',
     loadComponent: () =>
       loadRemoteModule('dashboard', './Component').then(m => m.App)
+  },
+  {
+    path: 'header',
+    loadComponent: () =>
+      loadRemoteModule('header', './Component').then(m => m.App)
   }
 ];
